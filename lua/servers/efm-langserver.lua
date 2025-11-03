@@ -24,7 +24,11 @@ return function(lspconfig, capabilities, on_attach)
 	local shfmt = require("efmls-configs.formatters.shfmt") -- bash formatter
 	local hadolint = require("efmls-configs.linters.hadolint") -- docker linter
 	local cpplint = require("efmls-configs.linters.cpplint") -- c/cpp linter
-	local clangformat = require("efmls-configs.formatters.clang_format") -- c/cpp formatter
+	-- Custom clang-format with 4 space indent
+	local clangformat = {
+		formatCommand = "clang-format --style='{BasedOnStyle: llvm, IndentWidth: 4, TabWidth: 4, UseTab: Never, AccessModifierOffset: -4}' -",
+		formatStdin = true,
+	}
 	local solhint = require("efmls-configs.linters.solhint") -- solidity linter
 
 	lspconfig.efm.setup({

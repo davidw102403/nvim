@@ -15,6 +15,7 @@ return function(lspconfig, capabilities, on_attach)
 		cmd = {
 			"clangd",
 			"--offset-encoding=utf-16",
+			"--fallback-style='{BasedOnStyle: llvm, IndentWidth: 4, TabWidth: 4, UseTab: Never}'",
 		},
 		filetypes = { "c", "cpp" },
 	})
